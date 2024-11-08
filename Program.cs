@@ -1,8 +1,7 @@
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
 
 using simulador_de_bolsa_valores_API.Models;
+using simulador_de_bolsa_valores_API.Services;
 
 namespace simulador_de_bolsa_valores_API;
 
@@ -17,6 +16,8 @@ public class Program{
         builder.Services.AddDbContext<StockExchangeContext>(options =>{
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         });
+
+        builder.Services.AddScoped<IClientService, ClientService>();
 
         var app = builder.Build();
 
