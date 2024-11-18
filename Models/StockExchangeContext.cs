@@ -6,9 +6,9 @@ public class StockExchangeContext : DbContext{
     
     public StockExchangeContext(
         DbContextOptions<StockExchangeContext> options
-    ): base(options){
-    
-    }
+    ): base(options){}
+
+    public StockExchangeContext(){}
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
@@ -17,7 +17,7 @@ public class StockExchangeContext : DbContext{
             .HasKey(c => c.Account);
 
 
-        modelBuilder.Entity<Ordens>()
+        modelBuilder.Entity<Order>()
             .HasKey(c => c.Order_id);
 
 
@@ -29,6 +29,6 @@ public class StockExchangeContext : DbContext{
         //);
     }
 
-    public DbSet<Ordens> Ordens{ get; set; } = null!;
-    public DbSet<Client> Client{ get; set; } = null!;
+    public virtual DbSet<Order> Orders{ get; set; } = null!;
+    public virtual DbSet<Client> Clients{ get; set; } = null!;
 }
