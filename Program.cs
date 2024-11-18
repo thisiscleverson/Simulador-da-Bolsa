@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-
+using simulador_de_bolsa_valores_API.DAL;
 using simulador_de_bolsa_valores_API.Models;
-using simulador_de_bolsa_valores_API.Services;
 
 namespace simulador_de_bolsa_valores_API;
 
@@ -17,7 +16,7 @@ public class Program{
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         });
 
-        builder.Services.AddScoped<IClientService, ClientService>();
+        builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
         var app = builder.Build();
 
