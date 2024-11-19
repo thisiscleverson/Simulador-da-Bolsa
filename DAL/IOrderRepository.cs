@@ -6,6 +6,8 @@ namespace simulador_de_bolsa_valores_API.DAL{
         Task<List<Order>> GetAllOrdersByAccount(string account);
         Order GetOrderById(string id);
 
+        Order GetLastAddedItemOrderByAccount(string account);
+
         void Save();
     }
 }
