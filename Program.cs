@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using simulador_de_bolsa_valores_API.DAL;
 using simulador_de_bolsa_valores_API.Models;
 
 namespace simulador_de_bolsa_valores_API;
@@ -8,8 +9,15 @@ public class Program{
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers();
-        builder.Services.AddDbContext<ClientContext>(opt => opt.UseInMemoryDatabase("Client"));
         
+        var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
+
+        builder.Services.AddDbContext<StockExchangeContext>(options =>{
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        });
+
+        builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
         var app = builder.Build();
 
         app.UseHttpsRedirection();
