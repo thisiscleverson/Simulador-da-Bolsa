@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using simulador_de_bolsa_valores_API.Models;
 
@@ -11,9 +12,11 @@ using simulador_de_bolsa_valores_API.Models;
 namespace simulador_de_bolsa_valores_API.Migrations
 {
     [DbContext(typeof(StockExchangeContext))]
-    partial class StockExchangeContextModelSnapshot : ModelSnapshot
+    [Migration("20241119111906_addMaxLengthNameColumn")]
+    partial class addMaxLengthNameColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
