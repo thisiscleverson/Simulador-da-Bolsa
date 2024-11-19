@@ -8,6 +8,7 @@ public class Client{
     [MaxLength(10)]
     public string Account {get; set; } 
     [NotNull]
+    [MaxLength(255)]
     public string Name {get; set; }
 
     public ICollection<Order> Orders { get; set; }

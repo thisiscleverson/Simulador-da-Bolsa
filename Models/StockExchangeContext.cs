@@ -10,15 +10,25 @@ public class StockExchangeContext : DbContext{
 
     public StockExchangeContext(){}
 
+    /*
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+        optionsBuilder.UseSqlServer("Server=localhost;Database=stock_exchange_db;User=root;Password=123456;");
+    }
+    */
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
-        // definir os tamanhos de caracteres para cada string
         modelBuilder.Entity<Client>()
             .HasKey(c => c.Account);
 
 
         modelBuilder.Entity<Order>()
             .HasKey(c => c.Order_id);
+
+        //<Client> 1 <-------> n <Order>
+        modelBuilder.Entity<Order>()
+            .HasOne(p => p.Client)
+            .WithMany(c => c.Orders)
+            .HasForeignKey(p => p.Account);
 
 
         // inserir alguns usuarios na tabela
