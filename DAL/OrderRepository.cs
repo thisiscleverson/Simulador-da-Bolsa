@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using simulador_de_bolsa_valores_API.Models;
 
