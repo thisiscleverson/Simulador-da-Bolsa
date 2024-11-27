@@ -50,14 +50,9 @@ public class OrderController : ControllerBase{
             List<Object> orderFormatted = [];
 
             foreach(Order order in orderList){
-                    var order_body = new {
-                        order_id = order.Order_id,
-                        account  = order.Account,
-                        symbol   = order.Symbol,
-                        side     = order.Side ? "BUY":"SELL",
-                        price    = order.Price,
-                        quantity = order.Qty
-                    };
+                var order_body = new {
+                    order_id = order.Order_id,
+                };
 
                 orderFormatted.Add(order_body);
             }
